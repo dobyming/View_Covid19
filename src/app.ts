@@ -188,7 +188,7 @@ function renderChart(data: any, labels: any) {
 }
 
 function setChartData(data: any) {
-  const chartData = data.slice(-14).map(value => value.Cases);
+  const chartData = data.slice(-14).map((value: any) => value.Cases);
   const chartLabel = data
     .slice(-14)
     .map((value: any) => new Date(value.Date).toLocaleDateString().slice(5, -1));
