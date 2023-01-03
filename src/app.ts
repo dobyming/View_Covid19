@@ -1,3 +1,6 @@
+// 라이브러리 로딩
+import axios from 'axios';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
