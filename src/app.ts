@@ -8,6 +8,9 @@ function getUnixTimestamp(date: Date) {
 
 // DOM
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
+const deathsTotal = $('.deaths') as HTMLParagraphElement; // type assertion
+const recoveredTotal = $('.recovered') as HTMLParagraphElement;
+const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
 const deaUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
 const rankList = $('.rank-list');
 const deathsList = $('.deaths-list');
