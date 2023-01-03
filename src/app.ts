@@ -1,6 +1,6 @@
 // 라이브러리 로딩
 import axios from 'axios';
-
+import { Chart } from 'chart.js';
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -14,7 +14,6 @@ const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement; // type assertion
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
-const deaUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
 const rankList = $('.rank-list');
 const deathsList = $('.deaths-list');
 const recoveredList = $('.recovered-list');
