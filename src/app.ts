@@ -1,6 +1,8 @@
 // 라이브러리 로딩
-import axios from 'axios';
-import { Chart } from 'chart.js';
+// import axios, { AxiosResponse } from 'axios';
+// import Chart from 'chart.js/auto';
+import { CovidSummaryResponse } from './covid';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -40,7 +42,7 @@ let isDeathLoading = false;
 const isRecoveredLoading = false;
 
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
