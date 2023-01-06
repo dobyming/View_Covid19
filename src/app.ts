@@ -1,6 +1,6 @@
 // 라이브러리 로딩
-// import axios, { AxiosResponse } from 'axios';
-// import Chart from 'chart.js/auto';
+import axios, { AxiosResponse } from 'axios';
+import Chart from 'chart.js/auto';
 import { CovidSummaryResponse } from './covid';
 
 // utils
