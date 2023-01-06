@@ -29,4 +29,18 @@ interface CovidSummaryResponse {
   Message: string;
 }
 
-export { CovidSummaryResponse };
+interface CountrySummaryInfo {
+  Country: string;
+  CountryCode: string;
+  Province: string;
+  City: string;
+  CityCode: string;
+  Lat: string;
+  Lon: string;
+  Cases: number;
+  Status: string;
+  Date: string;
+}
+
+export { CovidSummaryResponse, Country };
+export type CountrySummaryResponse = CountrySummaryInfo[];

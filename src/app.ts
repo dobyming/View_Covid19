@@ -1,7 +1,7 @@
 // 라이브러리 로딩
 import axios, { AxiosResponse } from 'axios';
 import Chart from 'chart.js/auto';
-import { CovidSummaryResponse } from './covid';
+import { CountrySummaryResponse, CovidSummaryResponse, Country } from './covid';
 
 // utils
 function $(selector: string) {
@@ -53,10 +53,13 @@ enum CovidStatus {
   Deaths = 'deaths',
 }
 
-function fetchCountryInfo(countryCode: string, status: CovidStatus) {
-  // countryCode "CH" , "KR" ... (string)
+function fetchCountryInfo(
+  country: string,
+  status: CovidStatus
+): Promise<AxiosResponse<CountrySummaryResponse>> {
+  // country : 국가 이름 들어감
   // params: confirmed, recovered, deaths (3가지만 받음)
-  const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
+  const url = `https://api.covid19api.com/country/${country}/status/${status}`;
   return axios.get(url);
 }
 
@@ -212,25 +215,25 @@ function setChartData(data: any) {
   renderChart(chartData, chartLabel);
 }
 
-function setTotalConfirmedNumber(data: any) {
+function setTotalConfirmedNumber(data: CovidSummaryResponse) {
   confirmedTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalConfirmed),
+    (total: number, current: Country) => (total += current.TotalConfirmed),
     0
-  );
+  ).toString();
 }
 
-function setTotalDeathsByWorld(data: any) {
+function setTotalDeathsByWorld(data: CovidSummaryResponse) {
   deathsTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalDeaths),
+    (total: number, current: Country) => (total += current.TotalDeaths),
     0
-  );
+  ).toString();
 }
 
-function setTotalRecoveredByWorld(data: any) {
+function setTotalRecoveredByWorld(data: CovidSummaryResponse) {
   recoveredTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalRecovered),
+    (total: number, current: Country) => (total += current.TotalRecovered),
     0
-  );
+  ).toString();
 }
 
 function setCountryRanksByConfirmedCases(data: any) {
