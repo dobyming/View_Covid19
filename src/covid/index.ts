@@ -10,7 +10,7 @@ interface Country {
   TotalDeaths: number;
   NewRecovered: number;
   TotalRecovered: number;
-  Premium: any;
+  // Premium: any;
 }
 
 interface Global {
