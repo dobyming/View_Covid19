@@ -202,6 +202,10 @@ async function setupData() {
 function renderChart(data: number[], labels: string[]) {
   const lineChart = $('#lineChart') as HTMLCanvasElement;
   const ctx = lineChart.getContext('2d');
+  if (Chart.getChart(lineChart)) {
+    Chart.getChart(lineChart)?.destroy();
+  }
+
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
   if (!ctx) {
@@ -220,7 +224,9 @@ function renderChart(data: number[], labels: string[]) {
         },
       ],
     },
-    options: {},
+    options: {
+      maintainAspectRatio: false, //차트 그래프 사이즈 고정
+    },
   });
 }
 
